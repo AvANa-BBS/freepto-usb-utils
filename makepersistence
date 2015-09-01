@@ -85,7 +85,7 @@ fi
 
 ###TODO: create $partition
 if [[ ! -b "$partition" ]]; then
-    _phase "Creating partition"
+    _phase "Creating partition: ${partition} ..."
     echo -e "n\np\n${partnum}\n\n\nw" | fdisk ${device}
     sleep 1 
     partprobe
@@ -103,7 +103,7 @@ if [[ $skip_random -eq 0 ]]; then
     sleep 2
 fi
 
-_phase "Create persistence"
+_phase "Create persistence on ${partition}"
 persistence_create "${partition}" "${password}"
 
 _ok "All done"
